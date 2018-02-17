@@ -3,13 +3,17 @@ function rot13(str) { // LBH QVQ VG!
   var newStr = str.split('');
   var codeStr = [];
 
-  var strEval = function(newStr) {
-
-  };
-
   newStr.forEach(function(x) {
-    codeStr.push(String.fromCharCode((x.charCodeAt() - 13)));
+    var strEval = x.charCodeAt();
+    if (strEval !== 32) {
+      strEval -= 13;
+      if (strEval < 65) {
+        strEval += 26;
+      }
+    }
+    codeStr.push(String.fromCharCode(strEval));
   });
+  codeStr = codeStr.join('');
   return codeStr;
 }
 
