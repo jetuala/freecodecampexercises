@@ -5,11 +5,10 @@ function rot13(str) { // LBH QVQ VG!
 
   newStr.forEach(function(x) {
     var strEval = x.charCodeAt();
-    if (strEval !== 32) {
+    if (strEval >= 78 && strEval <= 90) {
       strEval -= 13;
-      if (strEval < 65) {
-        strEval += 26;
-      }
+    } else if (strEval >= 64 && strEval <= 77) {
+      strEval += 13;
     }
     codeStr.push(String.fromCharCode(strEval));
   });
